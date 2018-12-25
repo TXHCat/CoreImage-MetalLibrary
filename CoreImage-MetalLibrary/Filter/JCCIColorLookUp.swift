@@ -12,7 +12,7 @@ class JCCIColorLookUp: CIFilter {
     
     @objc dynamic var inputImage: CIImage?
     @objc dynamic lazy var inputLUT: CIImage? = {
-        guard let url = Bundle.main.url(forResource: "lookup_amatorka",
+        guard let url = Bundle.main.url(forResource: "lookup",
                                         withExtension: "png") else {
             return nil
         }
@@ -21,7 +21,7 @@ class JCCIColorLookUp: CIFilter {
     @objc dynamic var inputIntensity: CGFloat = 1.0
     
     override func setDefaults() {
-        if let url = Bundle.main.url(forResource: "lookup_amatorka",
+        if let url = Bundle.main.url(forResource: "lookup",
                                      withExtension: "png")  {
             inputLUT = CIImage(contentsOf: url)
         }
