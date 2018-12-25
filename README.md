@@ -4,7 +4,7 @@ Core Image Filter Explorer. Build for macOS.
 ![ScreenShot](Samples/ScreenShot.png)
 
 ## Custom Filters
-Most base on [*Filterpedia*](https://github.com/FlexMonkey/Filterpedia). Using metallib. Written in Swift.
+Mostly base on [*Filterpedia*](https://github.com/FlexMonkey/Filterpedia). Using metallib. Written in Swift.
 
 ### Color Look up
 #### Amatorka
