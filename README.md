@@ -7,7 +7,7 @@ Core Image Filter Explorer. Build for macOS.
 Most base on [*Filterpedia*](https://github.com/FlexMonkey/Filterpedia). Using metallib. Written in Swift.
 
 ### Color Look up
-Amatorka
+#### Amatorka
 ![](Samples/ColorLookUp.jpg)
 
 ### Advanced Monochrome
