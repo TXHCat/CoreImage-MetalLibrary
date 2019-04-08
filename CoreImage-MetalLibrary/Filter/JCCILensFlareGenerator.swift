@@ -48,9 +48,8 @@ class JCCILensFlareGenerator: CIFilter {
     
     private let metalKernel: CIColorKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                let data = JCCICustomFilter.sharedInstance.metallibData else {
-                    return nil
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                return nil
             }
             let kernel = try CIColorKernel(functionName: "lensFlare", fromMetalLibraryData: data)
             return kernel

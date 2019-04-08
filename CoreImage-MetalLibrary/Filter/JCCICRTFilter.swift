@@ -88,9 +88,8 @@ class JCCICRTFilter: CIFilter {
         
         private let metalKernel: CIKernel? = {
             do {
-                guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                    let data = JCCICustomFilter.sharedInstance.metallibData else {
-                        return nil
+                guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                    return nil
                 }
                 let kernel = try CIKernel(functionName: "crtColor", fromMetalLibraryData: data)
                 return kernel
@@ -117,9 +116,8 @@ class JCCICRTFilter: CIFilter {
         
         private let metalKernel: CIWarpKernel? = {
             do {
-                guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                    let data = JCCICustomFilter.sharedInstance.metallibData else {
-                        return nil
+                guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                    return nil
                 }
                 let kernel = try CIWarpKernel(functionName: "crtWarp", fromMetalLibraryData: data)
                 return kernel

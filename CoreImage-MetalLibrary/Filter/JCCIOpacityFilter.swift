@@ -39,8 +39,7 @@ class JCCIOpacityFilter: CIFilter {
     
     private let metalKernel: CIColorKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                let data = JCCICustomFilter.sharedInstance.metallibData else {
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
                     return nil
             }
             let kernel = try CIColorKernel(functionName: "commitOpacity", fromMetalLibraryData: data)

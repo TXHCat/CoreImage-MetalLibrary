@@ -94,23 +94,25 @@ class ViewController: NSViewController {
     }()
     
     func updateFilter() {
-        if currentFilter?.attributes[kCIInputImageKey] != nil {
-            if currentFilter?.attributes[kCIInputBackgroundImageKey] != nil {
-                currentFilter?.setValue(background0, forKey: kCIInputBackgroundImageKey)
-                currentFilter?.setValue(avatar, forKey: kCIInputImageKey)
+        autoreleasepool {
+            if currentFilter?.attributes[kCIInputImageKey] != nil {
+                if currentFilter?.attributes[kCIInputBackgroundImageKey] != nil {
+                    currentFilter?.setValue(background0, forKey: kCIInputBackgroundImageKey)
+                    currentFilter?.setValue(avatar, forKey: kCIInputImageKey)
+                }
+                else if currentFilter?.attributes[kCIInputTargetImageKey] != nil {
+                    currentFilter?.setValue(background0, forKey: kCIInputImageKey)
+                    currentFilter?.setValue(background1, forKey: kCIInputTargetImageKey)
+                }
+                else {
+                    currentFilter?.setValue(background0, forKey: kCIInputImageKey)
+                }
             }
-            else if currentFilter?.attributes[kCIInputTargetImageKey] != nil {
-                currentFilter?.setValue(background0, forKey: kCIInputImageKey)
-                currentFilter?.setValue(background1, forKey: kCIInputTargetImageKey)
+            if currentFilter?.name == JCCILensFlareGenerator.className() {
+                currentFilter?.setValue(CIVector(cgRect: background0.extent), forKey: kCIInputExtentKey)
             }
-            else {
-                currentFilter?.setValue(background0, forKey: kCIInputImageKey)
-            }
+            ciImageView.image = currentFilter?.outputImage?.cropped(to: background0.extent)
         }
-        if currentFilter?.name == JCCILensFlareGenerator.className() {
-            currentFilter?.setValue(CIVector(cgRect: background0.extent), forKey: kCIInputExtentKey)
-        }
-        ciImageView.image = currentFilter?.outputImage?.cropped(to: background0.extent)
     }
 
     @IBAction func click(_ c: NSClickGestureRecognizer) {
@@ -122,7 +124,9 @@ class ViewController: NSViewController {
         let height = background0.extent.height / radio
         let y = (ciImageView.bounds.height - height) / 2
         let currentRect = CGRect(x: 0, y: y, width: ciImageView.bounds.width, height: height)
-        currentFilter?.setValue(CIVector(x: location.x * radio, y: (location.y - currentRect.minY) * radio), forKey: kCIInputCenterKey)
+        currentFilter?.setValue(CIVector(x: location.x * radio,
+                                         y: (location.y - currentRect.minY) * radio),
+                                forKey: kCIInputCenterKey)
         updateFilter()
     }
 

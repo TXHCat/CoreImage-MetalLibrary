@@ -46,10 +46,9 @@ class JCCISmoothThreshold: CIFilter {
     
     private let metalKernel: CIColorKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib") else {
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
                 return nil
             }
-            let data = try Data(contentsOf: url)
             let kernel = try CIColorKernel(functionName: "smoothThreshold", fromMetalLibraryData: data)
             return kernel
         }
@@ -95,9 +94,8 @@ class JCCIThreshold: CIFilter {
     
     private let metalKernel: CIColorKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                let data = JCCICustomFilter.sharedInstance.metallibData else {
-                    return nil
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                return nil
             }
             let kernel = try CIColorKernel(functionName: "thresholdFilter", fromMetalLibraryData: data)
             return kernel

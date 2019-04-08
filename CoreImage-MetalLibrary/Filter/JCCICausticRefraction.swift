@@ -62,9 +62,8 @@ class JCCICausticNoise: CIFilter{
     
     private let metalKernel: CIColorKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                let data = JCCICustomFilter.sharedInstance.metallibData else {
-                    return nil
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                return nil
             }
             let kernel = try CIColorKernel(functionName: "causticNoise", fromMetalLibraryData: data)
             return kernel
@@ -169,9 +168,8 @@ class JCCICausticRefraction: CIFilter {
     
     private let metalKernel: CIKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                let data = JCCICustomFilter.sharedInstance.metallibData else {
-                    return nil
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                return nil
             }
             let kernel = try CIKernel(functionName: "causticRefraction", fromMetalLibraryData: data)
             return kernel

@@ -74,9 +74,8 @@ class JCCICarnivalMirror: CIFilter {
     
     private let metalKernel: CIWarpKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                let data = JCCICustomFilter.sharedInstance.metallibData else {
-                    return nil
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                return nil
             }
             let kernel = try CIWarpKernel(functionName: "carnivalMirror", fromMetalLibraryData: data)
             return kernel

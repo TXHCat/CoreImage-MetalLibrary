@@ -416,5 +416,32 @@ extern "C" { namespace coreimage {
         }
         return color/total;
     }
+    
+    //MARK: MASK
+    float4 maskForCircle(sampler inputImage, float2 inputCenter, float radius, destination dest) {
+        float2 location = dest.coord();
+        float d = distance(inputCenter, location);
+        if (d > radius) {
+            return float4(0);
+        }
+        return inputImage.sample(inputImage.coord());
+    }
+    
+    float4 maskForRect(sampler inputImage, float2 inputCenter, float inputAngle, float2 inputSize, destination dest) {
+        float2 location = dest.coord();
+        float halfWidth = inputSize.x / 2;
+        float halfHeight = inputSize.y / 2;
+        float d = distance(inputCenter, location);
+        
+        if (halfWidth > d && halfHeight > d) {
+            return float4(0);
+        }
+        
+        return inputImage.sample(inputImage.coord());
+    }
+    
+//    float4 maskForLinear(sampler inputImage, float2 inputCenter, float inputAngle, destination dest) {
+//
+//    }
 
 }}

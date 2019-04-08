@@ -50,9 +50,8 @@ class JCCIScatter: CIFilter {
     
     private let metalKernel: CIKernel? = {
         do {
-            guard let url = Bundle.main.url(forResource: "default", withExtension: "metallib"),
-                let data = JCCICustomFilter.sharedInstance.metallibData else {
-                    return nil
+            guard let data = JCCICustomFilter.sharedInstance.metallibData else {
+                return nil
             }
             let kernel = try CIKernel(functionName: "scatter", fromMetalLibraryData: data)
             return kernel
