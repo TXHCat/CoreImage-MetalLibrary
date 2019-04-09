@@ -70,7 +70,10 @@ class JCCICircleMaskFilter: CIFilter {
                 return inputImage
         }
         return kernel.apply(extent: image.extent,
-                            arguments: [image, inputCenter, inputRadius, invert])
+                            arguments: [image,
+                                        inputCenter,
+                                        inputRadius,
+                                        invert])
     }
 }
 
@@ -145,7 +148,11 @@ class JCCIRectMaskFilter: CIFilter {
                 return inputImage
         }
         return kernel.apply(extent: image.extent,
-                            arguments: [image, inputCenter, inputAngle, inputSize, invert])
+                            arguments: [image,
+                                        inputCenter,
+                                        inputAngle,
+                                        inputSize,
+                                        invert])
     }
 }
 
@@ -212,6 +219,10 @@ class JCCILinearMaskFilter: CIFilter {
                 return inputImage
         }
         return kernel.apply(extent: image.extent,
-                            arguments: [image, inputCenter, inputAngle, invert, CGFloat.pi])
+                            arguments: [image,
+                                        inputCenter,
+                                        inputAngle,
+                                        invert,
+                                        CGFloat.pi])
     }
 }

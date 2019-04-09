@@ -416,6 +416,7 @@ extern "C" { namespace coreimage {
         }
         return color/total;
     }
+    
     //MARK: Mask
     ///Bool type is not available.
     float4 maskForCircle(sample_t inputImage, float2 inputCenter, float inputRadius, float invert, destination dest) {
@@ -446,7 +447,8 @@ extern "C" { namespace coreimage {
         float maxX = inputCenter.x + (inputSize.x / 2);
         float minY = inputCenter.y - (inputSize.y / 2);
         float maxY = inputCenter.y + (inputSize.y / 2);
-
+        
+        //rotate point instead of rotate the rect
         float d = distance(inputCenter, location);
         float y = (location.y - inputCenter.y);
         float angle = asin(y / d);
@@ -478,6 +480,7 @@ extern "C" { namespace coreimage {
             textureColor = float4(0);
         }
         
+        inputAngle = _mod(inputAngle, 2 * pi);//In case inputAngle > 2pi or inputAngle < -2pi
         float x = cos(inputAngle) * ((inputCenter.y - location.y) / sin(inputAngle));
         float temp = (inputCenter.x - location.x);
         
