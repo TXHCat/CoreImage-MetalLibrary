@@ -418,26 +418,26 @@ extern "C" { namespace coreimage {
     }
     //MARK: Mask
     ///Bool type is not available.
-    float4 maskForCircle(sample_t image, float2 center, float radius, float reverse, destination dest) {
-        float4 textureColor = image.rgba;
+    float4 maskForCircle(sample_t inputImage, float2 inputCenter, float inputRadius, float invert, destination dest) {
+        float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0.0);
-        if (reverse > 0) {
+        if (invert > 0) {
             maskColor = textureColor;
             textureColor = float4(0.0);
         }
         float2 location = dest.coord();
-        float d = distance(center, location);
-        if (d < radius) {
+        float d = distance(inputCenter, location);
+        if (d < inputRadius) {
             return textureColor;
         }
         return maskColor;
     }
     
-    float4 maskForRect(sample_t inputImage, float2 inputCenter, float inputAngle, float2 inputSize, float reverse, destination dest) {
+    float4 maskForRect(sample_t inputImage, float2 inputCenter, float inputAngle, float2 inputSize, float invert, destination dest) {
         float2 location = dest.coord();
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0);
-        if (reverse > 0) {
+        if (invert > 0) {
             maskColor = textureColor;
             textureColor = float4(0);
         }
@@ -468,15 +468,22 @@ extern "C" { namespace coreimage {
         return textureColor;
     }
 
-    float4 maskForLinear(sample_t inputImage, float2 inputCenter, float inputAngle, float pi, destination dest) {
+    float4 maskForLinear(sample_t inputImage, float2 inputCenter, float inputAngle, float invert, float pi, destination dest) {
         float2 location = dest.coord();
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0);
         
+        if (invert > 0){
+            maskColor = textureColor;
+            textureColor = float4(0);
+        }
+        
         float x = cos(inputAngle) * ((inputCenter.y - location.y) / sin(inputAngle));
         float temp = (inputCenter.x - location.x);
         
-        if ((inputAngle >= 0 && inputAngle != pi) || inputAngle == -pi) {
+        if ((inputAngle >= 0 && inputAngle <= pi) ||
+            (inputAngle <= -pi && inputAngle > -2 * pi) ||
+            (inputAngle == 2 * pi)) {
             if (x > temp) {
                 return maskColor;
             }

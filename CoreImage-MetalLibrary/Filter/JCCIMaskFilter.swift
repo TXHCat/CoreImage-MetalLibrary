@@ -12,12 +12,12 @@ import CoreImage
 class JCCICircleMaskFilter: CIFilter {
     @objc dynamic var inputImage: CIImage?
     @objc dynamic var inputCenter: CIVector = CIVector(x: 300, y: 300)
-    @objc dynamic var radius: CGFloat = 100.0
-    @objc dynamic var reverse: Bool = false
+    @objc dynamic var inputRadius: CGFloat = 100.0
+    @objc dynamic var invert: Bool = false
     
     override func setDefaults() {
-        reverse = false
-        radius = 100.0
+        invert = false
+        inputRadius = 100.0
         inputCenter = CIVector(x: 300, y: 300)
     }
     
@@ -36,15 +36,15 @@ class JCCICircleMaskFilter: CIFilter {
                             kCIAttributeDefault: [300, 300],
                             kCIAttributeType: kCIAttributeTypePosition],
             
-            "radius": [kCIAttributeIdentity: 0,
-                       kCIAttributeClass: "NSNumber",
-                       kCIAttributeDisplayName: "Radius",
-                       kCIAttributeDefault: 100.0,
-                       kCIAttributeType: kCIAttributeTypeDistance],
+            "inputRadius": [kCIAttributeIdentity: 0,
+                            kCIAttributeClass: "NSNumber",
+                            kCIAttributeDisplayName: "Radius",
+                            kCIAttributeDefault: 100.0,
+                            kCIAttributeType: kCIAttributeTypeDistance],
             
-            "reverse": [kCIAttributeIdentity: 0,
+            "invert": [kCIAttributeIdentity: 0,
                        kCIAttributeClass: "NSNumber",
-                       kCIAttributeDisplayName: "Reverse",
+                       kCIAttributeDisplayName: "Invert",
                        kCIAttributeDefault: false,
                        kCIAttributeType: kCIAttributeTypeBoolean],
         ]
@@ -69,7 +69,8 @@ class JCCICircleMaskFilter: CIFilter {
             let image = inputImage else {
                 return inputImage
         }
-        return kernel.apply(extent: image.extent, arguments: [image, inputCenter, radius, reverse])
+        return kernel.apply(extent: image.extent,
+                            arguments: [image, inputCenter, inputRadius, invert])
     }
 }
 
@@ -78,13 +79,13 @@ class JCCIRectMaskFilter: CIFilter {
     @objc dynamic var inputCenter: CIVector = CIVector(x: 300, y: 300)
     @objc dynamic var inputAngle: CGFloat = 0
     @objc dynamic var inputSize: CIVector = CIVector(x: 100, y: 100)
-    @objc dynamic var reverse: Bool = false
+    @objc dynamic var invert: Bool = false
     
     override func setDefaults() {
         inputAngle = 0
         inputSize = CIVector(x: 100, y: 100)
         inputCenter = CIVector(x: 300, y: 300)
-        reverse = false
+        invert = false
     }
     
     override var attributes: [String : Any] {
@@ -106,8 +107,8 @@ class JCCIRectMaskFilter: CIFilter {
                            kCIAttributeClass: "NSNumber",
                            kCIAttributeDisplayName: "Angle",
                            kCIAttributeDefault: 0,
-                           kCIAttributeSliderMin: -CGFloat.pi,
-                           kCIAttributeSliderMax: CGFloat.pi,
+                           kCIAttributeSliderMin: -CGFloat.pi * 2,
+                           kCIAttributeSliderMax: CGFloat.pi * 2,
                            kCIAttributeType: kCIAttributeTypeScalar],
             
             "inputSize": [kCIAttributeIdentity: 0,
@@ -116,9 +117,9 @@ class JCCIRectMaskFilter: CIFilter {
                           kCIAttributeDefault: [100, 100],
                           kCIAttributeType: kCIAttributeTypePosition],
             
-            "reverse": [kCIAttributeIdentity: 0,
+            "invert": [kCIAttributeIdentity: 0,
                         kCIAttributeClass: "NSNumber",
-                        kCIAttributeDisplayName: "Reverse",
+                        kCIAttributeDisplayName: "Invert",
                         kCIAttributeDefault: false,
                         kCIAttributeType: kCIAttributeTypeBoolean],
         ]
@@ -144,7 +145,7 @@ class JCCIRectMaskFilter: CIFilter {
                 return inputImage
         }
         return kernel.apply(extent: image.extent,
-                            arguments: [image, inputCenter, inputAngle, inputSize, reverse])
+                            arguments: [image, inputCenter, inputAngle, inputSize, invert])
     }
 }
 
@@ -152,10 +153,12 @@ class JCCILinearMaskFilter: CIFilter {
     @objc dynamic var inputImage: CIImage?
     @objc dynamic var inputCenter: CIVector = CIVector(x: 300, y: 300)
     @objc dynamic var inputAngle: CGFloat = 0
+    @objc dynamic var invert: Bool = false
     
     override func setDefaults() {
         inputAngle = 0
         inputCenter = CIVector(x: 300, y: 300)
+        invert = false
     }
     
     override var attributes: [String : Any] {
@@ -177,15 +180,15 @@ class JCCILinearMaskFilter: CIFilter {
                            kCIAttributeClass: "NSNumber",
                            kCIAttributeDisplayName: "Angle",
                            kCIAttributeDefault: 0,
-                           kCIAttributeSliderMax: CGFloat.pi,
-                           kCIAttributeSliderMin: -CGFloat.pi,
+                           kCIAttributeSliderMax: CGFloat.pi * 2,
+                           kCIAttributeSliderMin: -CGFloat.pi * 2,
                            kCIAttributeType: kCIAttributeTypeAngle],
             
-            "reverse": [kCIAttributeIdentity: 0,
-                        kCIAttributeClass: "NSNumber",
-                        kCIAttributeDisplayName: "Reverse",
-                        kCIAttributeDefault: false,
-                        kCIAttributeType: kCIAttributeTypeBoolean],
+            "invert": [kCIAttributeIdentity: 0,
+                       kCIAttributeClass: "NSNumber",
+                       kCIAttributeDisplayName: "Invert",
+                       kCIAttributeDefault: false,
+                       kCIAttributeType: kCIAttributeTypeBoolean],
         ]
     }
     
@@ -209,6 +212,6 @@ class JCCILinearMaskFilter: CIFilter {
                 return inputImage
         }
         return kernel.apply(extent: image.extent,
-                            arguments: [image, inputCenter, inputAngle, CGFloat.pi])
+                            arguments: [image, inputCenter, inputAngle, invert, CGFloat.pi])
     }
 }
