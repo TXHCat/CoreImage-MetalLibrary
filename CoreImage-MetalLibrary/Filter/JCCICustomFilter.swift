@@ -102,6 +102,18 @@ class JCCICustomFilter: NSObject, CIFilterConstructor {
         CIFilter.registerName(JCCICrossZoomTransition.className(),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
+        
+        CIFilter.registerName(JCCICircleMaskFilter.className(),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
+        
+        CIFilter.registerName(JCCIRectMaskFilter.className(),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
+        
+        CIFilter.registerName(JCCILinearMaskFilter.className(),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
     }
     
     func filter(withName name: String) -> CIFilter? {

@@ -416,32 +416,78 @@ extern "C" { namespace coreimage {
         }
         return color/total;
     }
-    
-    //MARK: MASK
-    float4 maskForCircle(sampler inputImage, float2 inputCenter, float radius, destination dest) {
-        float2 location = dest.coord();
-        float d = distance(inputCenter, location);
-        if (d > radius) {
-            return float4(0);
+    //MARK: Mask
+    ///Bool type is not available.
+    float4 maskForCircle(sample_t image, float2 center, float radius, float reverse, destination dest) {
+        float4 textureColor = image.rgba;
+        float4 maskColor = float4(0.0);
+        if (reverse > 0) {
+            maskColor = textureColor;
+            textureColor = float4(0.0);
         }
-        return inputImage.sample(inputImage.coord());
+        float2 location = dest.coord();
+        float d = distance(center, location);
+        if (d < radius) {
+            return textureColor;
+        }
+        return maskColor;
     }
     
-    float4 maskForRect(sampler inputImage, float2 inputCenter, float inputAngle, float2 inputSize, destination dest) {
+    float4 maskForRect(sample_t inputImage, float2 inputCenter, float inputAngle, float2 inputSize, float reverse, destination dest) {
         float2 location = dest.coord();
-        float halfWidth = inputSize.x / 2;
-        float halfHeight = inputSize.y / 2;
-        float d = distance(inputCenter, location);
-        
-        if (halfWidth > d && halfHeight > d) {
-            return float4(0);
+        float4 textureColor = inputImage.rgba;
+        float4 maskColor = float4(0);
+        if (reverse > 0) {
+            maskColor = textureColor;
+            textureColor = float4(0);
         }
-        
-        return inputImage.sample(inputImage.coord());
+
+        float minX = inputCenter.x - (inputSize.x / 2);
+        float maxX = inputCenter.x + (inputSize.x / 2);
+        float minY = inputCenter.y - (inputSize.y / 2);
+        float maxY = inputCenter.y + (inputSize.y / 2);
+
+        float d = distance(inputCenter, location);
+        float y = (location.y - inputCenter.y);
+        float angle = asin(y / d);
+        float resultAngle = angle - inputAngle;
+        if (inputCenter.x < location.x) {
+            resultAngle = angle + inputAngle;
+        }
+        float resultY = sin(resultAngle) * d + inputCenter.y;
+        float resultX = cos(resultAngle) * d + inputCenter.x;
+
+        if (resultX < minX || resultX > maxX) {
+            return maskColor;
+        }
+
+        if (resultY < minY || resultY > maxY) {
+            return maskColor;
+        }
+
+        return textureColor;
     }
-    
-//    float4 maskForLinear(sampler inputImage, float2 inputCenter, float inputAngle, destination dest) {
-//
-//    }
+
+    float4 maskForLinear(sample_t inputImage, float2 inputCenter, float inputAngle, float pi, destination dest) {
+        float2 location = dest.coord();
+        float4 textureColor = inputImage.rgba;
+        float4 maskColor = float4(0);
+        
+        float x = cos(inputAngle) * ((inputCenter.y - location.y) / sin(inputAngle));
+        float temp = (inputCenter.x - location.x);
+        
+        if ((inputAngle >= 0 && inputAngle != pi) || inputAngle == -pi) {
+            if (x > temp) {
+                return maskColor;
+            }
+            return textureColor;
+        }
+        else {
+            if (x > temp) {
+                return textureColor;
+            }
+            return maskColor;
+        }
+    }
 
 }}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01A40B3C225C3326003E8F9D /* JCCIMaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */; };
 		2301D03721D0AE97008DCC6F /* JCCICRTFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */; };
 		2301D03921D0F2CA008DCC6F /* JCFilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03821D0F2CA008DCC6F /* JCFilterListViewController.swift */; };
 		2301D03C21D0FD23008DCC6F /* JCFIlterConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03A21D0FD22008DCC6F /* JCFIlterConfigViewController.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIMaskFilter.swift; sourceTree = "<group>"; };
 		2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCICRTFilter.swift; sourceTree = "<group>"; };
 		2301D03821D0F2CA008DCC6F /* JCFilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCFilterListViewController.swift; sourceTree = "<group>"; };
 		2301D03A21D0FD22008DCC6F /* JCFIlterConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCFIlterConfigViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */,
 				2361BFE121CF80B7006A67C4 /* JCCILensFlareGenerator.swift */,
 				234736D221D1F69000CABF62 /* JCCICrossZoomTransition.swift */,
+				01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */,
 				2361BFDF21CF7E4B006A67C4 /* JCCICustomFilter.swift */,
 			);
 			path = Filter;
@@ -298,6 +301,7 @@
 				2301D03C21D0FD23008DCC6F /* JCFIlterConfigViewController.swift in Sources */,
 				2361BFF221CFFAFB006A67C4 /* JCCISmoothThreshold.swift in Sources */,
 				2361BFDC21CF7146006A67C4 /* JCCIAdvancedMonochrome.swift in Sources */,
+				01A40B3C225C3326003E8F9D /* JCCIMaskFilter.swift in Sources */,
 				2301D03721D0AE97008DCC6F /* JCCICRTFilter.swift in Sources */,
 				2361BFE021CF7E4B006A67C4 /* JCCICustomFilter.swift in Sources */,
 				2361BFE821CF903D006A67C4 /* JCCICausticRefraction.swift in Sources */,
