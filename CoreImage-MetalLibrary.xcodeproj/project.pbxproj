@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01A40B3C225C3326003E8F9D /* JCCIMaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */; };
+		01A40B41225CA0A6003E8F9D /* JCCIWhiteBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */; };
 		2301D03721D0AE97008DCC6F /* JCCICRTFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */; };
 		2301D03921D0F2CA008DCC6F /* JCFilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03821D0F2CA008DCC6F /* JCFilterListViewController.swift */; };
 		2301D03C21D0FD23008DCC6F /* JCFIlterConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03A21D0FD22008DCC6F /* JCFIlterConfigViewController.swift */; };
@@ -48,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIMaskFilter.swift; sourceTree = "<group>"; };
+		01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIWhiteBalance.swift; sourceTree = "<group>"; };
 		2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCICRTFilter.swift; sourceTree = "<group>"; };
 		2301D03821D0F2CA008DCC6F /* JCFilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCFilterListViewController.swift; sourceTree = "<group>"; };
 		2301D03A21D0FD22008DCC6F /* JCFIlterConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCFIlterConfigViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				2361BFE121CF80B7006A67C4 /* JCCILensFlareGenerator.swift */,
 				234736D221D1F69000CABF62 /* JCCICrossZoomTransition.swift */,
 				01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */,
+				01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */,
 				2361BFDF21CF7E4B006A67C4 /* JCCICustomFilter.swift */,
 			);
 			path = Filter;
@@ -314,6 +317,7 @@
 				2361BFF021CFF6BB006A67C4 /* JCCIScatter.swift in Sources */,
 				2391D14221C5043F000BB75F /* JCCIColorLookUp.swift in Sources */,
 				234736D321D1F69000CABF62 /* JCCICrossZoomTransition.swift in Sources */,
+				01A40B41225CA0A6003E8F9D /* JCCIWhiteBalance.swift in Sources */,
 				2361BFDE21CF7444006A67C4 /* JCCIRGBChannelCompositing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

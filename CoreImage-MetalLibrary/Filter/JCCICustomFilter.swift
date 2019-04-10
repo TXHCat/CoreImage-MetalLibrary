@@ -114,6 +114,10 @@ class JCCICustomFilter: NSObject, CIFilterConstructor {
         CIFilter.registerName(JCCILinearMaskFilter.className(),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
+        
+        CIFilter.registerName(JCCIWhiteBalance.className(),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
     }
     
     func filter(withName name: String) -> CIFilter? {
