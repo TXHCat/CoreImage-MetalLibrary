@@ -118,6 +118,10 @@ class JCCICustomFilter: NSObject, CIFilterConstructor {
         CIFilter.registerName(JCCIWhiteBalance.className(),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
+        
+        CIFilter.registerName(JCCIStarFieldGenerator.className(),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
     }
     
     func filter(withName name: String) -> CIFilter? {

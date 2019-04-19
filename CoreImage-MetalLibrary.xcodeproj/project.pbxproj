@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010B9878226974A20017791F /* JCCIStarFieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B9877226974A20017791F /* JCCIStarFieldGenerator.swift */; };
 		01A40B3C225C3326003E8F9D /* JCCIMaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */; };
 		01A40B41225CA0A6003E8F9D /* JCCIWhiteBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */; };
 		2301D03721D0AE97008DCC6F /* JCCICRTFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		010B9877226974A20017791F /* JCCIStarFieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIStarFieldGenerator.swift; sourceTree = "<group>"; };
 		01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIMaskFilter.swift; sourceTree = "<group>"; };
 		01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIWhiteBalance.swift; sourceTree = "<group>"; };
 		2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCICRTFilter.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				234736D221D1F69000CABF62 /* JCCICrossZoomTransition.swift */,
 				01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */,
 				01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */,
+				010B9877226974A20017791F /* JCCIStarFieldGenerator.swift */,
 				2361BFDF21CF7E4B006A67C4 /* JCCICustomFilter.swift */,
 			);
 			path = Filter;
@@ -295,6 +298,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				230B961821C3AC7200CFE14C /* ViewController.swift in Sources */,
+				010B9878226974A20017791F /* JCCIStarFieldGenerator.swift in Sources */,
 				230B962B21C3AD8B00CFE14C /* JCCIImageView.swift in Sources */,
 				230B962A21C3AD8B00CFE14C /* JCCIImageRenderer.swift in Sources */,
 				2361BFE221CF80B7006A67C4 /* JCCILensFlareGenerator.swift in Sources */,

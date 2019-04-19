@@ -419,7 +419,7 @@ extern "C" { namespace coreimage {
     
     //MARK: Mask
     ///Bool type is not available.
-    float4 maskForCircle(sample_t inputImage, float2 inputCenter, float inputRadius, float invert, destination dest) {
+    float4 maskForCircle(sample_t inputImage, float2 inputCenter, float inputRadius, int invert, destination dest) {
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0.0);
         if (invert > 0) {
@@ -434,7 +434,7 @@ extern "C" { namespace coreimage {
         return maskColor;
     }
     
-    float4 maskForRect(sample_t inputImage, float2 inputCenter, float inputAngle, float2 inputSize, float invert, destination dest) {
+    float4 maskForRect(sample_t inputImage, float2 inputCenter, float inputAngle, float2 inputSize, int invert, destination dest) {
         float2 location = dest.coord();
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0);
@@ -470,7 +470,7 @@ extern "C" { namespace coreimage {
         return textureColor;
     }
 
-    float4 maskForLinear(sample_t inputImage, float2 inputCenter, float inputAngle, float invert, float pi, destination dest) {
+    float4 maskForLinear(sample_t inputImage, float2 inputCenter, float inputAngle, int invert, float pi, destination dest) {
         float2 location = dest.coord();
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0);
@@ -498,6 +498,74 @@ extern "C" { namespace coreimage {
             }
             return maskColor;
         }
+    }
+    
+    //MARK: Star field(https://www.shadertoy.com/view/XlfGRj) by Pablo Román
+    float3 mod3(float3 x, float3 y) {
+        return float3(_mod(x.x, y.x), _mod(x.y, y.y), _mod(x.z, y.z));
+    }
+    
+    float4 starField(float4 inputExtent, float inputTime, float2 inputCenter, destination dest) {
+        const int iterations = 17;
+        const float formuparam = 0.53;
+        
+        const int volsteps = 20;
+        const float stepsize = 0.1;
+        
+        const float zoom   = 0.800;
+        const float tile   = 0.850;
+        const float speed  = 0.010;
+        
+        const float brightness = 0.0015;
+        const float darkmatter = 0.300;
+        const float distfading = 0.730;
+        const float saturation = 0.850;
+        
+        float2 fragCoord = dest.coord();
+        float2 iResolution = inputExtent.zw;
+        
+        //get coords and direction
+        float2 uv = fragCoord.xy / iResolution.xy - 0.5;
+        uv.y *= iResolution.y / iResolution.x;
+        float3 dir = float3(uv*zoom, 1.0);
+        float time = inputTime * speed + 0.25;
+        
+        //mouse rotation
+        float2 iMouse = inputCenter;
+        float a1 = .5 + iMouse.x / iResolution.x * 2.;
+        float a2 = .8 + iMouse.y / iResolution.y * 2.;
+        float2x2 rot1 = float2x2(cos(a1),sin(a1),-sin(a1),cos(a1));
+        float2x2 rot2 = float2x2(cos(a2),sin(a2),-sin(a2),cos(a2));
+        dir.xz = dir.xz * rot1;
+        dir.xy = dir.xy * rot2;
+        float3 from = float3(1.,.5,0.5);
+        from += float3(time*2.,time,-2.);
+        from.xz = from.xz * rot1;
+        from.xy = from.xy * rot2;
+        
+        //volumetric rendering
+        float s = 0.1, fade = 1.;
+        float3 v = float3(0.0);
+        for (int r = 0; r<volsteps; r++) {
+            float3 p = from + s * dir * 0.5;
+            p = abs(float3(tile) - mod3(p, float3(tile * 2.))); // tiling fold
+            float pa,a = pa = 0.;
+            for (int i = 0; i < iterations; i++) {
+                p = abs(p) / dot(p,p) - formuparam; // the magic formula
+                a += abs(length(p) - pa); // absolute sum of average change
+                pa = length(p);
+            }
+            float dm = max(0.,darkmatter-a*a*.001); //dark matter
+            a *= a*a; // add contrast
+            if (r>6) { fade*=1.-dm; } // dark matter, don't render near
+            
+            v += fade;
+            v += float3(s,s*s,s*s*s*s)*a*brightness*fade; // coloring based on distance
+            fade *= distfading; // distance fading
+            s += stepsize;
+        }
+        v = mix(float3(length(v)),v,saturation); //color adjust
+        return float4(v*.01,1.);
     }
 
 }}
