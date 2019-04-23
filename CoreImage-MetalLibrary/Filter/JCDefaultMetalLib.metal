@@ -419,7 +419,7 @@ extern "C" { namespace coreimage {
     
     //MARK: Mask
     ///Bool type is not available.
-    float4 maskForCircle(sample_t inputImage, float2 inputCenter, float inputRadius, int invert, destination dest) {
+    float4 maskForCircle(sample_t inputImage, float2 inputCenter, float inputRadius, float invert, destination dest) {
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0.0);
         if (invert > 0) {
@@ -434,7 +434,7 @@ extern "C" { namespace coreimage {
         return maskColor;
     }
     
-    float4 maskForRect(sample_t inputImage, float2 inputCenter, float inputAngle, float2 inputSize, int invert, destination dest) {
+    float4 maskForRect(sample_t inputImage, float2 inputCenter, float inputAngle, float2 inputSize, float invert, destination dest) {
         float2 location = dest.coord();
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0);
@@ -470,7 +470,7 @@ extern "C" { namespace coreimage {
         return textureColor;
     }
 
-    float4 maskForLinear(sample_t inputImage, float2 inputCenter, float inputAngle, int invert, float pi, destination dest) {
+    float4 maskForLinear(sample_t inputImage, float2 inputCenter, float inputAngle, float invert, float pi, destination dest) {
         float2 location = dest.coord();
         float4 textureColor = inputImage.rgba;
         float4 maskColor = float4(0);
