@@ -252,13 +252,9 @@ extern "C" { namespace coreimage {
     }
     
     //MARK: CRT
-    float _mod(float x, float y) {
-        return x - y * floor(x / y);
-    }
-    
     float4 crtColor(sampler image, float pixelWidth, float pixelHeight, destination dest ) {
-        int columnIndex = int(_mod(image.coord().x / pixelWidth, 3.0));
-        int rowIndex = int(_mod(image.coord().y, pixelHeight));
+        int columnIndex = int(fmod(image.coord().x / pixelWidth, 3.0));
+        int rowIndex = int(fmod(image.coord().y, pixelHeight));
     
         float scanlineMultiplier = (rowIndex == 0 || rowIndex == 1) ? 0.3 : 1.0;
         
@@ -480,7 +476,7 @@ extern "C" { namespace coreimage {
             textureColor = float4(0);
         }
         
-        inputAngle = _mod(inputAngle, 2 * pi);//In case inputAngle > 2pi or inputAngle < -2pi
+        inputAngle = fmod(inputAngle, 2 * pi);//In case inputAngle > 2pi or inputAngle < -2pi
         float x = cos(inputAngle) * ((inputCenter.y - location.y) / sin(inputAngle));
         float temp = (inputCenter.x - location.x);
         
@@ -501,10 +497,6 @@ extern "C" { namespace coreimage {
     }
     
     //MARK: Star field(https://www.shadertoy.com/view/XlfGRj) by Pablo Román
-    float3 mod3(float3 x, float3 y) {
-        return float3(_mod(x.x, y.x), _mod(x.y, y.y), _mod(x.z, y.z));
-    }
-    
     float4 starField(float4 inputExtent, float inputTime, float2 inputCenter, destination dest) {
         const int iterations = 17;
         const float formuparam = 0.53;
@@ -548,7 +540,7 @@ extern "C" { namespace coreimage {
         float3 v = float3(0.0);
         for (int r = 0; r<volsteps; r++) {
             float3 p = from + s * dir * 0.5;
-            p = abs(float3(tile) - mod3(p, float3(tile * 2.))); // tiling fold
+            p = abs(float3(tile) - fmod(p, float3(tile * 2.))); // tiling fold
             float pa,a = pa = 0.;
             for (int i = 0; i < iterations; i++) {
                 p = abs(p) / dot(p,p) - formuparam; // the magic formula
