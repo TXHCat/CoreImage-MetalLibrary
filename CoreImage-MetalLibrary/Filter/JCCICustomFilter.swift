@@ -122,6 +122,10 @@ class JCCICustomFilter: NSObject, CIFilterConstructor {
         CIFilter.registerName(JCCIStarFieldGenerator.className(),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
+        
+        CIFilter.registerName(JCCIChromaKey.className(),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
     }
     
     func filter(withName name: String) -> CIFilter? {
