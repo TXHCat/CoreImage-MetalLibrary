@@ -32,7 +32,7 @@ class JCCIChromaKey: CIFilter {
             "thresholdSensitivity": [kCIAttributeIdentity: 0,
                                      kCIAttributeClass: "NSNumber",
                                      kCIAttributeDisplayName: "ThresholdSensitivity",
-                                     kCIAttributeDefault: 0.4,
+                                     kCIAttributeDefault: 0.1,
                                      kCIAttributeSliderMax: 1.0,
                                      kCIAttributeSliderMin: 0.0,
                                      kCIAttributeType: kCIAttributeTypeScalar],
