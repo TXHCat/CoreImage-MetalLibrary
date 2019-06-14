@@ -21,7 +21,7 @@ class JCCISwipeTransition: CIFilter {
     
     override var attributes: [String : Any] {
         return [
-            kCIAttributeDisplayName : "White Balance",
+            kCIAttributeDisplayName : "Swipe Transition",
             
             "inputImage": [kCIAttributeIdentity: 0,
                            kCIAttributeClass: "CIImage",
