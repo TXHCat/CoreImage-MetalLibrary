@@ -27,103 +27,107 @@ class JCCICustomFilter: NSObject, CIFilterConstructor {
     
     static func registFilter() {
         
-        CIFilter.registerName(JCCIColorLookUp.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIColorLookUp.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCILensFlareGenerator.className(),
+        CIFilter.registerName(NSStringFromClass(JCCILensFlareGenerator.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIAdvancedMonochrome.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIAdvancedMonochrome.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIOpacityFilter.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIOpacityFilter.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIBleachBypass.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIBleachBypass.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIRGBChannelCompositing.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIRGBChannelCompositing.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIRGBChannelToneCurve.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIRGBChannelToneCurve.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCICarnivalMirror.className(),
+        CIFilter.registerName(NSStringFromClass(JCCICarnivalMirror.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIKuwaharaFilter.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIKuwaharaFilter.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIChromaticAberration.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIChromaticAberration.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCITransverseChromaticAberration.className(),
+        CIFilter.registerName(NSStringFromClass(JCCITransverseChromaticAberration.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCICausticNoise.className(),
+        CIFilter.registerName(NSStringFromClass(JCCICausticNoise.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCICausticRefraction.className(),
+        CIFilter.registerName(NSStringFromClass(JCCICausticRefraction.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIScatter.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIScatter.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCISmoothThreshold.className(),
+        CIFilter.registerName(NSStringFromClass(JCCISmoothThreshold.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIThreshold.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIThreshold.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCICRTFilter.className(),
+        CIFilter.registerName(NSStringFromClass(JCCICRTFilter.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIVHSTrackingLines.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIVHSTrackingLines.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCICrossZoomTransition.className(),
+        CIFilter.registerName(NSStringFromClass(JCCICrossZoomTransition.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCICircleMaskFilter.className(),
+        CIFilter.registerName(NSStringFromClass(JCCICircleMaskFilter.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIRectMaskFilter.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIRectMaskFilter.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCILinearMaskFilter.className(),
+        CIFilter.registerName(NSStringFromClass(JCCILinearMaskFilter.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIWhiteBalance.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIWhiteBalance.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIStarFieldGenerator.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIStarFieldGenerator.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
         
-        CIFilter.registerName(JCCIChromaKey.className(),
+        CIFilter.registerName(NSStringFromClass(JCCIChromaKey.self),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
+        
+        CIFilter.registerName(NSStringFromClass(JCCISwipeTransition.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
     }
