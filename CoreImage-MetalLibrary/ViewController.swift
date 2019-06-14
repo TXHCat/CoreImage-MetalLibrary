@@ -40,6 +40,9 @@ class ViewController: NSViewController {
     
     var currentFilter: CIFilter? {
         didSet {
+            if let filter = currentFilter {
+                print("Current FilterName: \(filter.name)")                
+            }
             filterAttribute.currentFilter = currentFilter
             updateFilter()
         }
@@ -110,6 +113,25 @@ class ViewController: NSViewController {
             }
             if currentFilter?.name == JCCILensFlareGenerator.className() {
                 currentFilter?.setValue(CIVector(cgRect: background0.extent), forKey: kCIInputExtentKey)
+            }
+            if currentFilter?.attributes["inputText"] != nil {
+                if currentFilter?.name == "CIAttributedTextImageGenerator" {
+                    let shadow = NSShadow()
+                    shadow.shadowOffset = CGSize(width: 10, height: -10)
+                    shadow.shadowColor = .red
+                    shadow.shadowBlurRadius = 1
+                    let attr = NSAttributedString(string: "Jake", attributes: [.foregroundColor : NSColor.white,
+                                                                               .font : NSFont.systemFont(ofSize: 128),
+                                                                               .paragraphStyle : NSParagraphStyle.default,
+                                                                               .shadow : shadow])
+                    currentFilter?.setValue(attr, forKey: "inputText")
+                    if let result = currentFilter?.outputImage {
+                        print("Text Size: \(result.extent), Str Size: \(attr.size())")
+                        
+                        ciImageView.image = currentFilter?.outputImage?.transformed(by: CGAffineTransform(translationX: background0.extent.width / 2 - result.extent.width / 2, y: background0.extent.height / 2 - result.extent.height / 2)).composited(over: background0)
+                        return
+                    }
+                }
             }
             ciImageView.image = currentFilter?.outputImage?.cropped(to: background0.extent)
         }

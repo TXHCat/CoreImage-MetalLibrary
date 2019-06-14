@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		010B9878226974A20017791F /* JCCIStarFieldGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010B9877226974A20017791F /* JCCIStarFieldGenerator.swift */; };
+		0144988122B38BE00029078D /* JCCISwpieTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0144988022B38BE00029078D /* JCCISwpieTransition.swift */; };
 		01A30A68229641CB00D546F8 /* JCCIChromaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A30A67229641CB00D546F8 /* JCCIChromaKey.swift */; };
 		01A40B3C225C3326003E8F9D /* JCCIMaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */; };
 		01A40B41225CA0A6003E8F9D /* JCCIWhiteBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		010B9877226974A20017791F /* JCCIStarFieldGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIStarFieldGenerator.swift; sourceTree = "<group>"; };
+		0144988022B38BE00029078D /* JCCISwpieTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCISwpieTransition.swift; sourceTree = "<group>"; };
 		01A30A67229641CB00D546F8 /* JCCIChromaKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIChromaKey.swift; sourceTree = "<group>"; };
 		01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIMaskFilter.swift; sourceTree = "<group>"; };
 		01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIWhiteBalance.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */,
 				010B9877226974A20017791F /* JCCIStarFieldGenerator.swift */,
 				01A30A67229641CB00D546F8 /* JCCIChromaKey.swift */,
+				0144988022B38BE00029078D /* JCCISwpieTransition.swift */,
 				2361BFDF21CF7E4B006A67C4 /* JCCICustomFilter.swift */,
 			);
 			path = Filter;
@@ -320,6 +323,7 @@
 				2361BFE621CF8411006A67C4 /* JCCICarnivalMirror.swift in Sources */,
 				2361BFEE21CFF55F006A67C4 /* JCCITransverseChromaticAberration.swift in Sources */,
 				2361BFE421CF81E4006A67C4 /* JCCIBleachBypass.swift in Sources */,
+				0144988122B38BE00029078D /* JCCISwpieTransition.swift in Sources */,
 				2361BFF421D00A1A006A67C4 /* JCCIVHSTrackingLines.swift in Sources */,
 				230B962E21C3CC2900CFE14C /* JCCIOpacityFilter.swift in Sources */,
 				2361BFF021CFF6BB006A67C4 /* JCCIScatter.swift in Sources */,
