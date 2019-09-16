@@ -12,6 +12,7 @@
 		01A30A68229641CB00D546F8 /* JCCIChromaKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A30A67229641CB00D546F8 /* JCCIChromaKey.swift */; };
 		01A40B3C225C3326003E8F9D /* JCCIMaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */; };
 		01A40B41225CA0A6003E8F9D /* JCCIWhiteBalance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */; };
+		01CE91C222CEFAEE00F6435C /* JCCICornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01CE91C122CEFAEE00F6435C /* JCCICornerRadius.swift */; };
 		2301D03721D0AE97008DCC6F /* JCCICRTFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */; };
 		2301D03921D0F2CA008DCC6F /* JCFilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03821D0F2CA008DCC6F /* JCFilterListViewController.swift */; };
 		2301D03C21D0FD23008DCC6F /* JCFIlterConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2301D03A21D0FD22008DCC6F /* JCFIlterConfigViewController.swift */; };
@@ -56,6 +57,7 @@
 		01A30A67229641CB00D546F8 /* JCCIChromaKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIChromaKey.swift; sourceTree = "<group>"; };
 		01A40B3B225C3326003E8F9D /* JCCIMaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIMaskFilter.swift; sourceTree = "<group>"; };
 		01A40B40225CA0A6003E8F9D /* JCCIWhiteBalance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCIWhiteBalance.swift; sourceTree = "<group>"; };
+		01CE91C122CEFAEE00F6435C /* JCCICornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCICornerRadius.swift; sourceTree = "<group>"; };
 		2301D03621D0AE97008DCC6F /* JCCICRTFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCCICRTFilter.swift; sourceTree = "<group>"; };
 		2301D03821D0F2CA008DCC6F /* JCFilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCFilterListViewController.swift; sourceTree = "<group>"; };
 		2301D03A21D0FD22008DCC6F /* JCFIlterConfigViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JCFIlterConfigViewController.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				010B9877226974A20017791F /* JCCIStarFieldGenerator.swift */,
 				01A30A67229641CB00D546F8 /* JCCIChromaKey.swift */,
 				0144988022B38BE00029078D /* JCCISwpieTransition.swift */,
+				01CE91C122CEFAEE00F6435C /* JCCICornerRadius.swift */,
 				2361BFDF21CF7E4B006A67C4 /* JCCICustomFilter.swift */,
 			);
 			path = Filter;
@@ -325,6 +328,7 @@
 				2361BFE421CF81E4006A67C4 /* JCCIBleachBypass.swift in Sources */,
 				0144988122B38BE00029078D /* JCCISwpieTransition.swift in Sources */,
 				2361BFF421D00A1A006A67C4 /* JCCIVHSTrackingLines.swift in Sources */,
+				01CE91C222CEFAEE00F6435C /* JCCICornerRadius.swift in Sources */,
 				230B962E21C3CC2900CFE14C /* JCCIOpacityFilter.swift in Sources */,
 				2361BFF021CFF6BB006A67C4 /* JCCIScatter.swift in Sources */,
 				2391D14221C5043F000BB75F /* JCCIColorLookUp.swift in Sources */,

@@ -577,5 +577,39 @@ extern "C" { namespace coreimage {
         float blendValue = smoothstep(thresholdSensitivity, thresholdSensitivity + smoothing, distance(float2(Cr, Cb), float2(maskCr, maskCb)));
         return float4(textureColor.rgb, textureColor.a * blendValue);
     }
-
+    
+    //MARK: Corner Radius
+    float4 cornerRadius(sample_t inputImage, float2 imageSize, float percent, destination dest) {
+        float2 center = float2(imageSize.x / 2.0, imageSize.y / 2.0);
+        float minX = center.x * percent;
+        float maxX = imageSize.x - minX;
+        float minY = center.y * percent;
+        float maxY = imageSize.y - minY;
+        float width = fmin(minX, minY);
+        float2 d = dest.coord();
+        if ((d.x >= minX && d.x <= maxX) && (d.y >= minY && d.y <= maxY)) {
+            return inputImage.rgba;
+        } else if ((d.x < minX && d.y < minY)) {
+            if (distance(d, float2(minX,minY)) > width) {
+                return float4(0);
+            }
+        } else if ((d.x < minX && d.y > maxY)) {
+            if (distance(d, float2(minX,maxY)) > width) {
+                return float4(0);
+            }
+        } else if ((d.x > maxX && d.y < minY)) {
+            if (distance(d, float2(maxX,minY)) > width) {
+                return float4(0);
+            }
+        } else if ((d.x > maxX && d.y > maxY)) {
+            if (distance(d, float2(maxX,maxY)) > width) {
+                return float4(0);
+            }
+        } else if (d.x < (minX - width) || d.x > (maxX + width)) {
+            return float4(0);
+        } else if (d.y < (minY - width) || d.y > (maxY + width)) {
+            return float4(0);
+        }
+        return  inputImage.rgba;
+    }
 }}

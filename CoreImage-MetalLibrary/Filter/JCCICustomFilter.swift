@@ -130,6 +130,9 @@ class JCCICustomFilter: NSObject, CIFilterConstructor {
         CIFilter.registerName(NSStringFromClass(JCCISwipeTransition.self),
                               constructor: JCCICustomFilter.sharedInstance,
                               classAttributes: [:])
+        CIFilter.registerName(NSStringFromClass(JCCICornerRadius.self),
+                              constructor: JCCICustomFilter.sharedInstance,
+                              classAttributes: [:])
     }
     
     func filter(withName name: String) -> CIFilter? {
